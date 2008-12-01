@@ -243,9 +243,11 @@ CStdString CLabelFormatter::GetMaskContent(const CMaskString &mask, const CFileI
   case 'K':
     value = item->m_strTitle;
   case 'M':
-    if (movie && movie->m_iEpisode > 0)
-      value.Format("%02.2i %s", movie->m_iEpisode,g_localizeStrings.Get(20360));
-    break;
+	if (movie && movie->m_iEpisode == 1)
+		value.Format("%02.2i %s", movie->m_iEpisode,g_localizeStrings.Get(20359)); // One episode
+	else if (movie && movie->m_iEpisode > 1)
+		value.Format("%02.2i %s", movie->m_iEpisode,g_localizeStrings.Get(20360)); // More than one episode 
+	break;
   case 'E':
     if (movie && movie->m_iEpisode > 0)
     { // episode number
